@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Distribuida</title>
-    <script src="static/script.js" defer></script>
-    <link rel="stylesheet" href="static/styles.css">
-</head>
-<body>
-    <h1>Aplicación Distribuida</h1>
-    <button id="pingButton">Ping al Servidor</button>
-    <div id="result"></div>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>App Distribuida</title>
+        <script>
+            if (!localStorage.getItem("loggedIn")) {
+                window.location.href = "login.html";
+            }
+        </script>
+        <script src="static/script.js" defer></script>
+        <link rel="stylesheet" href="static/styles.css">
+    </head>
+
+    <body>
+        <h1>Aplicación Distribuida</h1>
+        <button id="pingButton">Ping al Servidor</button>
+        <div id="result"></div>
+        <button id="logoutButton">Cerrar Sesión</button>
+
+        <script>
+            // Cerrar sesión
+            document.getElementById("logoutButton").addEventListener("click", () => {
+                localStorage.removeItem("loggedIn"); // Borra la sesión
+                window.location.href = "login.html"; // Redirige al login
+            });
+        </script>
+    </body>
+
 </html>
